@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">StyleruCourseExampleApp</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Логин</string>
+    <string name="prompt_password">Пароль</string>
+    <string name="btn_login_text">войти</string>
+</resources>
