@@ -27,14 +27,14 @@ public class EventRecyclerAdapter extends BaseRecyclerAdapter<EventsItem, EventR
         viewHolder.tvName.setText(item.getTitle());
         viewHolder.tvDescription.setText(item.getSubtitle());
         viewHolder.tvAddress.setText(item.getLocation());
-
+        viewHolder.tvDateTime.setText(item.getDateTime());
         //Для даты и времени сначала используем форматирование
-        String fullDateTimeString = new DateTime(item.getDateTime())
+        /*String fullDateTimeString = new DateTime(item.getDateTime())
                 .toString(DateTimeFormat.longDate());
         viewHolder.tvDateTime.setText(new DateTime(item.getDateTime())
                 .toString()
                 .substring(0, fullDateTimeString.length() - 8)
-                + ", " + new DateTime(item).toString("HH:mm"));
+                + ", " + new DateTime(item).toString("HH:mm"));*/
 
         //Загружаем изображение во ImageView с помощью библиотеки
         Glide

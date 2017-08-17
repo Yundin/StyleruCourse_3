@@ -36,6 +36,16 @@ public class EventsItem {
     @Expose
     private boolean viewAttendants;
 
+    public EventsItem(String title, String subtitle,
+                      String imageUrl, String dateTime,
+                      String location) {
+        this.title = title;
+        this.subtitle = subtitle;
+        this.imageUrl = imageUrl;
+        this.dateTime = dateTime;
+        this.location = location;
+    }
+
     public int getId() {
         return id;
     }

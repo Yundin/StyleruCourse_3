@@ -44,6 +44,7 @@
                 android:padding="16dp"
                 android:textColor="#fff"
                 android:textSize="22sp"
+                android:maxLines="4"
                 tools:text="Стандартное мероприятие" />
         </FrameLayout>
 
