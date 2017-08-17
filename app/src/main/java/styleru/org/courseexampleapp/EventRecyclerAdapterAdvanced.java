@@ -2,51 +2,36 @@ package styleru.org.courseexampleapp;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by tetawex on 08.08.17.
  */
 
-public class EventRecyclerAdapter
-        extends RecyclerView.Adapter<EventRecyclerAdapter.ViewHolder> {
-    private Context context;
-    private LayoutInflater inflater;
-    private List<EventsItem> data;
-
-    public EventRecyclerAdapter(Context context) {
-        inflater = LayoutInflater.from(context);
-        data = new ArrayList<EventsItem>();
-        this.context = context;
+public class EventRecyclerAdapterAdvanced extends BaseRecyclerAdapter<EventsItem, EventRecyclerAdapterAdvanced.ViewHolder> {
+    public EventRecyclerAdapterAdvanced(Context context) {
+        super(context);
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //Создаем вью и вьюхолдер из лэйаута
-        View view = inflater.inflate(R.layout.recycleritem_event, parent, false);
-        return new ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        EventsItem item = data.get(position);
+    protected void bindSingleItem(ViewHolder viewHolder, EventsItem item) {
+        //Биндим данные
         viewHolder.tvName.setText(item.getTitle());
         viewHolder.tvDescription.setText(item.getSubtitle());
         viewHolder.tvAddress.setText(item.getLocation());
         viewHolder.tvDateTime.setText(item.getDateTime());
+        //Для даты и времени сначала используем форматирование
+        /*String fullDateTimeString = new DateTime(item.getDateTime())
+                .toString(DateTimeFormat.longDate());
+        viewHolder.tvDateTime.setText(new DateTime(item.getDateTime())
+                .toString()
+                .substring(0, fullDateTimeString.length() - 8)
+                + ", " + new DateTime(item).toString("HH:mm"));*/
+
         //Загружаем изображение во ImageView с помощью библиотеки
         Glide
                 .with(context)
@@ -55,25 +40,18 @@ public class EventRecyclerAdapter
                 .into(viewHolder.ivBackground);
     }
 
-    public List<EventsItem> getData() {
-        return data;
+    @Override
+    protected ViewHolder createVH(View view) {
+        return new ViewHolder(view);
     }
 
-    public void setData(List<EventsItem> data) {
-        this.data = data;
-    }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    protected int getLayoutId() {
+        return R.layout.recycleritem_event;
     }
 
-    @Override
-    public int getItemCount() {
-        return data.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvName;
         TextView tvDescription;
         TextView tvDateTime;
