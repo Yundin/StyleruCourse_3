@@ -1,12 +1,15 @@
 package styleru.org.courseexampleapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 public class LoginActivity extends AppCompatActivity {
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +26,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void goToFeedPage() {
         Intent intent = new Intent(this, EventsFeedActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("login", "your_text");
-        intent.putExtras(bundle);
         startActivity(intent);
     }
 }
-

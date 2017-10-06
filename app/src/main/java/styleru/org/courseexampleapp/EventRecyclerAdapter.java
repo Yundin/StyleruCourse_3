@@ -5,21 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by tetawex on 08.08.17.
- */
 
 public class EventRecyclerAdapter
         extends RecyclerView.Adapter<EventRecyclerAdapter.ViewHolder> {
@@ -27,7 +18,7 @@ public class EventRecyclerAdapter
     private LayoutInflater inflater;
     private List<EventsItem> data;
 
-    public EventRecyclerAdapter(Context context) {
+    EventRecyclerAdapter(Context context) {
         inflater = LayoutInflater.from(context);
         data = new ArrayList<EventsItem>();
         this.context = context;
@@ -47,7 +38,7 @@ public class EventRecyclerAdapter
         viewHolder.tvDescription.setText(item.getSubtitle());
         viewHolder.tvAddress.setText(item.getLocation());
         viewHolder.tvDateTime.setText(item.getDateTime());
-        //Загружаем изображение во ImageView с помощью библиотеки
+        //Загружаем изображение в ImageView с помощью библиотеки
         Glide
                 .with(context)
                 .load(item.getImageUrl())

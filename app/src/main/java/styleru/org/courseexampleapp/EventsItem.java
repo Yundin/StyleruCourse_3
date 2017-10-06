@@ -5,35 +5,15 @@ import com.google.gson.annotations.SerializedName;
 
 public class EventsItem {
 
-    @SerializedName("id")
-    @Expose
     private int id;
-    @SerializedName("status")
-    @Expose
     private int state;
-    @SerializedName("title")
-    @Expose
     private String title;
-    @SerializedName("subtitle")
-    @Expose
     private String subtitle;
-    @SerializedName("image_url")
-    @Expose
     private String imageUrl;
-    @SerializedName("date_time")
-    @Expose
     private String dateTime;
-    @SerializedName("location")
-    @Expose
     private String location;
-    @SerializedName("author")
-    @Expose
     private String author;
-    @SerializedName("attendants_count")
-    @Expose
     private int attendantsCount;
-    @SerializedName("view_attendants")
-    @Expose
     private boolean viewAttendants;
 
     public EventsItem(String title, String subtitle,

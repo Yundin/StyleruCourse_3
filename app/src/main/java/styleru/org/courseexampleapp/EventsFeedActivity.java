@@ -19,8 +19,6 @@ public class EventsFeedActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private EventRecyclerAdapter adapter;
 
-    private ApiInterface apiInterface;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +31,7 @@ public class EventsFeedActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, true));
     }
 
@@ -52,30 +50,5 @@ public class EventsFeedActivity extends AppCompatActivity {
         }
         adapter.setData(events);
         adapter.notifyDataSetChanged();
-
-        /*
-        //web request
-        getApiInterface().getEvents(new EventsRequest("44b28917f89605379cf52d29a3e4e7b71944", 20, 0))
-                .enqueue(new Callback<EventsResponse>() {
-                    @Override
-                    public void onResponse(Call<EventsResponse> call,
-                                           Response<EventsResponse> response) {
-                        adapter.setData(response.body().getData());
-                        adapter.notifyDataSetChanged();
-                    }
-
-                    @Override
-                    public void onFailure(Call<EventsResponse> call, Throwable t) {
-                        Toast
-                                .makeText(getBaseContext(),
-                                        getString(R.string.error_message),
-                                        Toast.LENGTH_SHORT)
-                                .show();
-                    }
-                });*/
-    }
-
-    private ApiInterface getApiInterface() {
-        return apiInterface == null ? new ApiService().getApiInterface() : apiInterface;
     }
 }
